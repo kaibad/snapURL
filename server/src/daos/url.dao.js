@@ -20,5 +20,9 @@ export const createShortUrlDao = async (shortUrlCode, longUrl, userId) => {
 };
 
 export const getShortCode = async (shortCode) => {
-  return await UrlShortener.findOne({ shortCode: shortCode });
+  //findOne() does NOT accept update operators like $inc as its second argument.
+  return await UrlShortener.findOneAndUpdate(
+    { shortCode: shortCode },
+    { $inc: { clickCount: 1 } }
+  );
 };

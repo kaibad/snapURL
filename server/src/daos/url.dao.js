@@ -1,3 +1,4 @@
+import { ConflictError } from "../middlewares/errorHandler.js";
 import UrlShortener from "../models/urlShortener.model.js";
 
 export const createShortUrlDao = async (shortUrlCode, longUrl, userId) => {
@@ -15,7 +16,10 @@ export const createShortUrlDao = async (shortUrlCode, longUrl, userId) => {
 
     return shortUrl;
   } catch (error) {
-    console.error("Failed to save URL.");
+    if (error.code == 11000) {
+      throw new ConflictError(error);
+    }
+    throw new Error(error);
   }
 };
 

@@ -2,6 +2,7 @@ import express from "express";
 import UrlShortener from "./models/urlShortener.model.js";
 import urlRoutes from "./routes/url.routes.js";
 import { redirectFromShortUl } from "./controllers/url.controller.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 
@@ -17,5 +18,7 @@ app.use("/api/create", urlRoutes);
 
 //redirect to original url
 app.get("/:id", redirectFromShortUl);
+
+app.use(errorHandler);
 
 export default app;

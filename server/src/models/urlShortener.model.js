@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 const urlShortenerSchema = new mongoose.Schema(
   {
     originalUrl: {
@@ -23,3 +25,6 @@ const urlShortenerSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+const UrlShortener = mongoose.model("UrlShortener", urlShortenerSchema);
+export default UrlShortener;

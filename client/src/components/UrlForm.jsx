@@ -62,7 +62,10 @@ const UrlForm = () => {
             </div>
           )} */}
 
-        <button className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 disabled:bg-indigo-400 transition duration-200 shadow-md hover:shadow-lg">
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700 disabled:bg-indigo-400 transition duration-200 shadow-md hover:shadow-lg"
+        >
           Shorten URL
         </button>
       </div>
@@ -83,6 +86,7 @@ const UrlForm = () => {
               className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-sm"
             />
             <button
+              type="button"
               onClick={copyToClipboard}
               className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition text-sm font-medium"
             >
